@@ -44,6 +44,8 @@ function! s:_echohl_en(mes) "{{{
     echoh LineNr
   elseif a:mes=~'^replace with\|^Scanning\%(:\| tags.\)'
     echoh Question
+  elseif a:mes=~'<[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]\+@[a-zA-Z0-9-]\+\%(\.[a-zA-Z0-9-]\+\)*>$'
+    echoh Title
   end
 endfunction
 "}}}
@@ -56,6 +58,8 @@ function! s:_echohl_ja(mes) "{{{
     echoh LineNr
   elseif a:mes=~'\%(\sに置換しますか?\)\|\%(^スキャン中:\)\|\%(^タグをスキャン中.\)'
     echoh Question
+  elseif a:mes=~'<[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]\+@[a-zA-Z0-9-]\+\%(\.[a-zA-Z0-9-]\+\)*>$'
+    echoh Title
   end
 endfunction
 "}}}
