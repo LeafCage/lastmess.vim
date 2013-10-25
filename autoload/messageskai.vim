@@ -7,6 +7,8 @@ function! messageskai#view(count) "{{{
     let mess = filter(mess, 'v:val!~g:messageskai_ignore_pattern')
   end
   let n = a:count==0 ? g:messageskai_default_count : a:count
+  let messlen = len(mess)
+  let n = abs(n)>messlen ? messlen : n
   let n = n<0 ? n : n*-1
   let lang = v:lang=='ja' ? 'ja' : 'en'
   redraw!
