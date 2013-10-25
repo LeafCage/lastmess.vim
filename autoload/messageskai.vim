@@ -12,11 +12,15 @@ function! messageskai#view(count) "{{{
   let n = n<0 ? n : n*-1
   let lang = v:lang=='ja' ? 'ja' : 'en'
   redraw!
-  for mes in mess[(n):-1]
-    call s:_echohl_{lang}(mes)
-    ec mes
+  try
+    for mes in mess[(n):-1]
+      call s:_echohl_{lang}(mes)
+      ec mes
+      echoh NONE
+    endfor
+  finally
     echoh NONE
-  endfor
+  endtry
 endfunction
 "}}}
 
