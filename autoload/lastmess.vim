@@ -16,7 +16,6 @@ function! lastmess#view(count) "{{{
     for mes in mess[(n):-1]
       call s:_echohl_{lang}(mes)
       ec mes
-      echoh NONE
     endfor
   finally
     echoh NONE
@@ -36,30 +35,34 @@ function! s:_get_messages() "{{{
 endfunction
 "}}}
 function! s:_echohl_en(mes) "{{{
-  if a:mes=~'^search hit \%(BOTTOM\|TOP\)'
+  if a:mes=~#'^search hit \%(BOTTOM\|TOP\)'
     echoh WarningMsg
   elseif a:mes=~#'^E\d\+:\|^Error detected while processing'
     echoh ErrorMsg
-  elseif a:mes=~'^line\s\+\d'
+  elseif a:mes=~#'^line\s\+\d'
     echoh LineNr
-  elseif a:mes=~'^replace with\|^Scanning\%(:\| tags.\)'
+  elseif a:mes=~#'^replace with\|^Scanning\%(:\| tags.\)'
     echoh Question
-  elseif a:mes=~'<[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]\+@[a-zA-Z0-9-]\+\%(\.[a-zA-Z0-9-]\+\)*>$'
+  elseif a:mes=~#'<[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]\+@[a-zA-Z0-9-]\+\%(\.[a-zA-Z0-9-]\+\)*>$'
     echoh Title
+  else
+    echoh NONE
   end
 endfunction
 "}}}
 function! s:_echohl_ja(mes) "{{{
-  if a:mes=~'に戻ります$'
+  if a:mes=~#'に戻ります$'
     echoh WarningMsg
-  elseif a:mes=~'^E\d\+:\|の処理中にエラーが検出されました:'
+  elseif a:mes=~#'^E\d\+:\|の処理中にエラーが検出されました:'
     echoh ErrorMsg
-  elseif a:mes=~'^行\s\+\d'
+  elseif a:mes=~#'^行\s\+\d'
     echoh LineNr
-  elseif a:mes=~'\%(\sに置換しますか?\)\|\%(^スキャン中:\)\|\%(^タグをスキャン中.\)'
+  elseif a:mes=~#'\%(\sに置換しますか?\)\|\%(^スキャン中:\)\|\%(^タグをスキャン中.\)'
     echoh Question
-  elseif a:mes=~'<[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]\+@[a-zA-Z0-9-]\+\%(\.[a-zA-Z0-9-]\+\)*>$'
+  elseif a:mes=~#'<[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]\+@[a-zA-Z0-9-]\+\%(\.[a-zA-Z0-9-]\+\)*>$'
     echoh Title
+  else
+    echoh NONE
   end
 endfunction
 "}}}
