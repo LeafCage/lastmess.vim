@@ -1,12 +1,12 @@
 if exists('s:save_cpo')| finish| endif
 let s:save_cpo = &cpo| set cpo&vim
 "=============================================================================
-function! messageskai#view(count) "{{{
+function! lastmess#view(count) "{{{
   let mess = s:_get_messages()
-  if g:messageskai_ignore_pattern!=''
-    let mess = filter(mess, 'v:val!~g:messageskai_ignore_pattern')
+  if g:lastmess_ignore_pattern!=''
+    let mess = filter(mess, 'v:val!~g:lastmess_ignore_pattern')
   end
-  let n = a:count==0 ? g:messageskai_default_count : a:count
+  let n = a:count==0 ? g:lastmess_default_count : a:count
   let messlen = len(mess)
   let n = abs(n)>messlen ? messlen : n
   let n = n<0 ? n : n*-1

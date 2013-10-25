@@ -1,4 +1,4 @@
-*messages-kai.txt*	|:messages|の最後の方だけ見たいんだァー！
+*lastmess.txt*	|:messages|の最後の方だけ見たいんだァー！
 
 Author  : LeafCage <leafcage+vim @ gmail.com>
 License : MIT license  {{{
@@ -22,43 +22,43 @@ License : MIT license  {{{
 }}}
 
 ==============================================================================
-目次						*messages-kai-contents*
+目次						*lastmess-contents*
 
-概要				|messages-kai-introduction|
-インターフェイス		|messages-kai-interface|
-  変数				  |messages-kai-variables|
-  コマンド			  |messages-kai-commands|
-  キーマッピング		  |messages-kai-key-mappings|
+概要				|lastmess-introduction|
+インターフェイス		|lastmess-interface|
+  変数				  |lastmess-variables|
+  コマンド			  |lastmess-commands|
+  キーマッピング		  |lastmess-key-mappings|
 
 
 ==============================================================================
-概要						*messages-kai-introduction*
+概要						*lastmess-introduction*
 
-*messages-kai* はVimの|:messages|の最後のほうだけを見るためのプラグインです。
+*lastmess* はVimの|:messages|の最後のほうだけを見るためのプラグインです。
 最終行からカウントで指定した行数分、|:messages|を見ることが出来ます。
 
 最新版:
-https://github.com/LeafCage/messages-kai.vim
+https://github.com/LeafCage/lastmess.vim
 
 
 ==============================================================================
-インターフェイス				*messages-kai-interface*
+インターフェイス				*lastmess-interface*
 
 ------------------------------------------------------------------------------
-変数						*messages-kai-variables*
+変数						*lastmess-variables*
 
-g:messageskai_default_count			*g:messageskai_default_count*
+g:lastmess_default_count			*g:lastmess_default_count*
 	既定値: 10
 	カウントが与えられていないときの既定のカウント。
 
 
-g:messageskai_ignore_pattern			*g:messageskai_ignore_pattern*
+g:lastmess_ignore_pattern			*g:lastmess_ignore_pattern*
 	既定値: ""
 	このパターンにマッチした文字列を表示するメッセージから除外する。
 
 
 ------------------------------------------------------------------------------
-コマンド					*messages-kai-commands*
+コマンド					*lastmess-commands*
 
 						*:Messages*
 :Messages [count]
@@ -66,17 +66,17 @@ g:messageskai_ignore_pattern			*g:messageskai_ignore_pattern*
 	{count}は引数として与えてもコマンドの前に与えても良い。両方与えられた
 	場合は引数として与えられたほうが優先される。
 	|:messages|を最後から{count}行、表示する。{count}が省略されたとき、ま
-	たは{count}が0のときには|g:messageskai_default_count|が{count}として使
+	たは{count}が0のときには|g:lastmess_default_count|が{count}として使
 	われる。|:messages|を全て見たい場合は大きな数を指定すると良い。
 
 
 ------------------------------------------------------------------------------
-キーマッピング					*messages-kai-key-mappings*
+キーマッピング					*lastmess-key-mappings*
 
-<Plug>(messages-kai-view)			*<Plug>(messages-kai-view)*
+<Plug>(lastmess)				*<Plug>(lastmess)*
 	有効モード: ノーマル
 	カウントが与えられたときには|:messages|を最後から{count}行、表示する。
-	{count}が省略されたときには|g:messageskai_default_count|が{count}とし
+	{count}が省略されたときには|g:lastmess_default_count|が{count}とし
 	て使われる。|:messages|を全て見たい場合は大きな数を指定すると良い。
 
 
