@@ -60,9 +60,9 @@ g:lastmess_ignore_pattern			*g:lastmess_ignore_pattern*
 ------------------------------------------------------------------------------
 コマンド					*lastmess-commands*
 
-						*:Messages*
-:Messages [count]
-:[count]Messages
+						*:LastMess*
+:LastMess [count]
+:[count]LastMess
 	{count}は引数として与えてもコマンドの前に与えても良い。両方与えられた
 	場合は引数として与えられたほうが優先される。
 	|:messages|を最後から{count}行、表示する。{count}が省略されたとき、ま
