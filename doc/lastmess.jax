@@ -48,13 +48,20 @@ https://github.com/LeafCage/lastmess.vim
 変数						*lastmess-variables*
 
 g:lastmess_default_count			*g:lastmess_default_count*
-	既定値: 10
+	既定値: 20
 	カウントが与えられていないときの既定のカウント。
 
 
 g:lastmess_ignore_pattern			*g:lastmess_ignore_pattern*
 	既定値: ""
 	このパターンにマッチした文字列を表示するメッセージから除外する。
+	自分にとってのノイズとなるメッセージを指定することで、必要なメッセージ
+	だけに集中することが出来るだろう。
+	例: >
+	  let g:lastmess_ignore_pattern =
+	  \ 'スキャン中\|検索したので\|箇所変更しました;\|行 削除しました;\|'.
+	  \ '行 追加しました\|\d\+L, \d\+C$\|行 --\d\+%--$'.
+	  \ '\|--バッファに行がありません--$'
 
 
 ------------------------------------------------------------------------------
