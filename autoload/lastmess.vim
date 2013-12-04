@@ -13,9 +13,11 @@ function! lastmess#view(count) "{{{
   let n = n<0 ? n : n*-1
   let lang = v:lang=='ja' ? 'ja' : 'en'
   redraw!
+  let items = items(g:lastmess_special_highlight)
   try
     for mes in mess[(n):-1]
       call s:_echohl_{lang}(mes)
+      call s:_echohl_special(mes, items)
       ec mes
     endfor
   finally
@@ -69,6 +71,14 @@ function! s:_echohl_ja(mes) "{{{
   else
     echoh NONE
   end
+endfunction
+"}}}
+function! s:_echohl_special(mes, items) "{{{
+  for [hi, pat] in a:items
+    if a:mes=~# pat
+      exe 'echoh' hi
+    end
+  endfor
 endfunction
 "}}}
 

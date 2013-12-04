@@ -74,6 +74,14 @@ g:lastmess_highlight_errcontents	*g:lastmess_highlight_errcontents*
 	エラーメッセージの具体的内容に使われるハイライト。
 
 
+g:lastmess_special_highlight			*g:lastmess_special_highlight*
+	既定値: {}
+	ユーザが自分で定義するハイライトを収めた辞書。
+	キーに利用するハイライト名を、値にマッチするパターンを定義することで、
+	そのハイライトが利用される。 例: >
+		let g:lastmess_special_highlight = {'MoreMsg': '^sourced:'}
+
+
 ------------------------------------------------------------------------------
 コマンド					*lastmess-commands*
 
