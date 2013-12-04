@@ -1,5 +1,6 @@
 if exists('s:save_cpo')| finish| endif
 let s:save_cpo = &cpo| set cpo&vim
+scriptencoding utf-8
 "=============================================================================
 function! lastmess#view(count) "{{{
   let mess = s:_get_messages()
@@ -37,8 +38,10 @@ endfunction
 function! s:_echohl_en(mes) "{{{
   if a:mes=~#'^search hit \%(BOTTOM\|TOP\)'
     echoh WarningMsg
-  elseif a:mes=~#'^E\d\+:\|^Error detected while processing'
-    echoh ErrorMsg
+  elseif a:mes=~#'^Error detected while processing'
+    exe 'echoh' g:lastmess_highlight_errstart
+  elseif a:mes=~#'^E\d\+:'
+    exe 'echoh' g:lastmess_highlight_errcontents
   elseif a:mes=~#'^line\s\+\d'
     echoh LineNr
   elseif a:mes=~#'^replace with\|^Scanning\%(:\| tags.\)'
@@ -53,8 +56,10 @@ endfunction
 function! s:_echohl_ja(mes) "{{{
   if a:mes=~#'に戻ります$'
     echoh WarningMsg
-  elseif a:mes=~#'^E\d\+:\|の処理中にエラーが検出されました:'
-    echoh ErrorMsg
+  elseif a:mes=~#'の処理中にエラーが検出されました:'
+    exe 'echoh' g:lastmess_highlight_errstart
+  elseif a:mes=~#'^E\d\+:'
+    exe 'echoh' g:lastmess_highlight_errcontents
   elseif a:mes=~#'^行\s\+\d'
     echoh LineNr
   elseif a:mes=~#'\%(\sに置換しますか?\)\|\%(^スキャン中:\)\|\%(^タグをスキャン中.\)'

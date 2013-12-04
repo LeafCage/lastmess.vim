@@ -64,6 +64,16 @@ g:lastmess_ignore_pattern			*g:lastmess_ignore_pattern*
 	  \ '\|--バッファに行がありません--$'
 
 
+g:lastmess_highlight_errstart		*g:lastmess_highlight_errstart*
+	既定値: "ErrorMsg"
+	エラーメッセージの開始行に使われるハイライト。
+
+
+g:lastmess_highlight_errcontents	*g:lastmess_highlight_errcontents*
+	既定値: "PreProc"
+	エラーメッセージの具体的内容に使われるハイライト。
+
+
 ------------------------------------------------------------------------------
 コマンド					*lastmess-commands*
 
