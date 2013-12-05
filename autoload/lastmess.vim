@@ -13,11 +13,11 @@ function! lastmess#view(count) "{{{
   let n = n<0 ? n : n*-1
   let lang = v:lang=='ja' ? 'ja' : 'en'
   redraw!
-  let items = items(g:lastmess_special_highlight)
   try
     for mes in mess[(n):-1]
+      echoh NONE
+      call s:_echohl_special(mes)
       call s:_echohl_{lang}(mes)
-      call s:_echohl_special(mes, items)
       ec mes
     endfor
   finally
@@ -50,8 +50,6 @@ function! s:_echohl_en(mes) "{{{
     echoh Question
   elseif a:mes=~#'<[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]\+@[a-zA-Z0-9-]\+\%(\.[a-zA-Z0-9-]\+\)*>$'
     echoh Title
-  else
-    echoh NONE
   end
 endfunction
 "}}}
@@ -68,15 +66,13 @@ function! s:_echohl_ja(mes) "{{{
     echoh Question
   elseif a:mes=~#'<[a-zA-Z0-9.!#$%&''*+/=?^_`{|}~-]\+@[a-zA-Z0-9-]\+\%(\.[a-zA-Z0-9-]\+\)*>$'
     echoh Title
-  else
-    echoh NONE
   end
 endfunction
 "}}}
-function! s:_echohl_special(mes, items) "{{{
-  for [hi, pat] in a:items
+function! s:_echohl_special(mes) "{{{
+  for [higroup, pat] in g:lastmess_special_highlight
     if a:mes=~# pat
-      exe 'echoh' hi
+      exe 'echoh' higroup
     end
   endfor
 endfunction
